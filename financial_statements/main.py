@@ -1,4 +1,4 @@
-from Financial_Statements.helpers import get_max_pages, load_pages, prepare_template, fill_dict, adjustment_statement
+from financial_statements.helpers import get_max_pages, load_pages, prepare_template, fill_dict, adjustment_statement
 
 
 def get_statement(statement_type: str, ticker: str, years_of_data: int):
