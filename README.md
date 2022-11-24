@@ -1,6 +1,6 @@
 # Finance API
 > Name: Ari Gestetner  
-App Type: API  
+App Type: API/Addon  
 Catagory: Finance
 
 
@@ -33,7 +33,8 @@ Catagory: Finance
 #### How Does My Project Stand Out
 #### Main Features
 
-### Technologies
+### Technologies  
+This API/Addon
 #### Languages
 #### Framework
 #### Deployment

@@ -1,13 +1,12 @@
 import uvicorn
 
 from fastapi import FastAPI
-from helpers import get_max_pages, load_pages, prepare_template, fill_dict, adjustment_statement
-
+from financial_statements.main import get_statement
 app = FastAPI()
 
 
 @app.get("/")
-async def root():
+def root():
     message = {
         "Code": "200",
         "message": "You've succesfully reached Financial_API",
@@ -15,40 +14,13 @@ async def root():
     return message
 
 @app.get("/stockinfo/")
-async def ticker(ticker: str = "BRK.A"):
+def ticker(ticker: str = "BRK.A"):
     return {"Ticker": ticker}
 
 @app.get("/financials/{statement_type}/")
-async def financials(statement_type: str, ticker: str, years_of_data: int = 5):
-
-    if statement_type == "is":
-        statement_type = "income-statement"
-    elif statement_type == "cfs":
-        statement_type = "cash-flow"
-    elif statement_type == "bs":
-        statement_type = "balance-sheet"
-    else:
-        return {"Code": 400, "Statement Type": "Incorrect"}
-          
-        
-    max_pages = get_max_pages(years_of_data)
-    results = [None] * max_pages
-    thread_list = []
-    statement = {}
-    statement["Ticker"] = ticker.upper()
-    statement["Statement Type"] = statement_type    
-    statement["Years Of Data"] = 0
-    statement["Yearly Data"] = []
+def financials(statement_type: str, ticker: str, years_of_data: int = 5):
     
-    results = load_pages(ticker, statement_type, max_pages, thread_list, results)
-
-    statement = prepare_template(results, statement, statement_type)
-    
-    statement = fill_dict(results, statement)
-    
-    statement = adjustment_statement(statement, statement_type)
-
-    return statement
+    return get_statement(statement_type, ticker, years_of_data)
 
 if __name__ == "__main__":
     uvicorn.run("server.api:app", host="0.0.0.0", port=8000, reload=True)
