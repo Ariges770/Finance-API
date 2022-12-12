@@ -13,17 +13,13 @@ def getStatement(ticker: str, statement_type: str, page: int, index: int, result
         agents_list = [agent for agent in csv.DictReader(agents)]
     rand = randint(0, (len(agents_list) - 1))
     headers = agents_list[rand]
-    # headers = {
-    #     'authority': 'www.barchart.com',
-    #     'referer': f'https://www.barchart.com/stocks/quotes/{ticker}/{statement_type}/annual',
-    #     'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="104", "Opera GX";v="90"',
-    #     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 OPR/90.0.4480.117',
-    # }
     params = {
         'reportPage': page,
     }
     response = requests.get(f'https://www.barchart.com/stocks/quotes/{ticker}/{statement_type}/annual', params=params, headers=headers)
     results[index] = response
+    
+
 def load_pages(ticker: str, statement_type, max_pages: int, thread_list: list, results: list):
 
     # Add threads to list the size of the number of pages searched
@@ -239,7 +235,7 @@ def calculate_keys(years_statement: dict, first_key: str, total_key: str):
             can_count = True
             
 class Results():
-    def __init__(self, years_of_data, ticker, statement_type) -> None:
+    def __init__(self, years_of_data: int, ticker: str, statement_type: str) -> None:
         self.ticker = ticker
         self.years_of_data = years_of_data
         self.statement_type = statement_type
