@@ -5,6 +5,7 @@ import csv
 from time import sleep
 from random import randint, random
 from bs4 import BeautifulSoup
+from fastapi import HTTPException
 
 def getStatement(ticker: str, statement_type: str, page: int, index: int, results: list):
     
@@ -236,3 +237,31 @@ def calculate_keys(years_statement: dict, first_key: str, total_key: str):
                 total += add_to_total
         if key == first_key:
             can_count = True
+            
+class Results():
+    def __init__(self, years_of_data, ticker, statement_type) -> None:
+        self.ticker = ticker
+        self.years_of_data = years_of_data
+        self.statement_type = statement_type
+        
+        self._adjust_statement_type()
+        self.max_pages = get_max_pages(years_of_data)
+        
+        self.results = [None] * self.max_pages
+        self.thread_list = []
+        self.statement = {}
+        
+        self.statement["Ticker"] = ticker.upper()
+        self.statement["Statement Type"] = statement_type    
+        self.statement["Years Of Data"] = 0
+        self.statement["Yearly Data"] = []
+
+    def _adjust_statement_type(self):
+        if self.statement_type == "is":
+            self.statement_type = "income-statement"
+        elif self.statement_type == "cfs":
+            self.statement_type = "cash-flow"
+        elif self.statement_type == "bs":
+            self.statement_type = "balance-sheet"
+        else:
+            raise HTTPException(status_code=400, detail="Statement format is incorrect, /financials to view options")
