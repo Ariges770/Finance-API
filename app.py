@@ -17,6 +17,13 @@ def root():
 def ticker(ticker: str = "BRK.A"):
     return {"Ticker": ticker}
 
+@app.get("/financials/")
+def get_arg_values():
+    return {"details":"Keys are input and values are expected result",
+            "is":"Income Statement",
+            "cfs": "Cash-Flow Statement",
+            "bs":"Balance Sheet"}
+
 @app.get("/financials/{statement_type}/")
 def financials(statement_type: str, ticker: str, years_of_data: int = 5):
     
