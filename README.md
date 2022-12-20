@@ -1,7 +1,7 @@
 # Finance API
 > Name: Ari Gestetner  
-App Type: API/Addon  
-Catagory: Finance
+App Type: API/Add-on  
+Category: Finance
 
 
 ## Table of Contents
@@ -65,16 +65,16 @@ This API is divided into three main features.
 These are 
 
 ### Technologies  
-This API/Addon
+This API/Add-on
 #### Languages
 #### Framework
 #### Deployment
 
 ## How to Install and Run the Project (Using make)
-This application utilises a makefile in order to easily setup and run.
+This application utilises a Makefile in order to easily set up and run.
 
 ### How to Setup the App
-Being that this program uses a makefile all it take to run is...
+Being that this program uses a Makefile all it takes to run is...
 ```Bash
 make
 ```
@@ -93,7 +93,7 @@ After running the app, python will create binaries to cache for quicker runtime.
 make clean
 ```
 ### How to Run the App
-In order to run the app, all you have to do is enter...
+To run the app, all you have to do is enter...
 ```Bash
 make run
 ```
@@ -110,8 +110,8 @@ make prod
 Fast API generates automated docs, these can be found at `\docs`. Alternatively, you can use `\redoc` for a different style 
 
 ### Tests
-Being that building robust applications is my highest priority, I have implemented unit testing using Pytest.
-in order to run these tests use...
+Being that building robust applications is my highest priority, I have implemented unit testing using Pytest. 
+To run these tests use...
 ```Bash
 make test
 ```
