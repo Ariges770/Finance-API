@@ -32,10 +32,10 @@ Category: Finance
 Finance-API was built to provide easy access to financial data directly to your investment spreadsheet. It can provide the client with past performance in the form of financial statements. Furthermore, it is also able to provide the user with currently listed options and market data about the stock, like market value or KPI's like the p/e ratio.
 
 ### Motivation
-#### Why Did I Crey Did I Create This Application?
+#### Why Did I Create Did I Create This Application?
 I initially prototyped this app as I was fed up with having to copy and paste financial statements into a spreadsheet for further automated valuation and analysis. I later consulted a friend asking what they thought of the concept, and they encouraged me to further build it up for easier use.  
 
-#### Whate This Application?
+#### What is This Application?
 I initially prototyped this app as I was fed up with having to copy and paste financial statements into a spreadsheet for further automated valuation and analysis. I later consulted a friend asking what they thought of the concept, and they encouraged me to further build it up for easier use.  
 
 #### What Did I Have to Solve?
