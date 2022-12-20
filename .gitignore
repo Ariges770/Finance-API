@@ -1,4 +1,6 @@
 .vercel
 Finance_API3.9
+Finance_API
 __pycache__
+.vercelignore
 # vercel.json

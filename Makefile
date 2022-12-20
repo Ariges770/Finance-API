@@ -20,10 +20,22 @@ $(VENV)/bin/activate: requirements.txt
 
 venv: $(VENV)/bin/activate
 
+test: requirements.txt
+	clear
+	pytest
+
+upload: requirements.txt
+	vercel
+
+prod: requirements.txt
+	vercel --prod
+
 
 clean:
 	clear
 	rm -rf __pycache__
+	rm -rf .pytest_cache
+	py3clean
 	rm -rf $(VENV)
 
 
