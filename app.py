@@ -1,7 +1,10 @@
 import uvicorn
 
 from fastapi import FastAPI
+
 from financial_statements.main import get_statement
+from stock_info.main import get_stock_info
+
 app = FastAPI()
 
 
@@ -14,8 +17,11 @@ def root():
     return message
 
 @app.get("/stockinfo/")
-def ticker(ticker: str = "BRK.A"):
-    return {"Ticker": ticker}
+def ticker(ticker: str):
+    
+    response = get_stock_info(ticker)
+    
+    return response
 
 @app.get("/financials/")
 def get_arg_values():
