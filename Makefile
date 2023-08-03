@@ -1,6 +1,7 @@
 VENV = Finance_API3.9
 PYTHON = $(VENV)/bin/python3
 PIP = $(VENV)/bin/pip3
+PIP3 = $(VENV)/bin/pip3
 SHELL := /bin/bash
 
 all: venv
